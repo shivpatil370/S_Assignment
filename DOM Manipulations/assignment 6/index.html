@@ -1,0 +1,44 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <form>
+    <label for="name">
+      Name:
+    </label>
+    <input type="text" id="name">
+    <br>
+    <button type="submit">Submit</button>
+  </form>
+</body>
+<script>
+    const form=document.querySelector("form");
+form.style.fontFamily="Arial";
+form.style.backgroundColor="gray";
+form.style.padding="20px";
+form.style.borderRadius="20px";
+
+const label=document.querySelector("label");
+label.style.fontWeight="bold";
+label.style.fontSize="20px";
+label.style.color="blue";
+
+const input=document.querySelector("input");
+input.style.fontStyle="italic";
+input.style.marginBottom="20px";
+input.style.height="30px";
+
+const button=document.querySelector("button");
+button.style.backgroundColor="yellow";
+button.style.width="225px";
+button.style.border="1px solid yellow";
+</script>
+</html>
