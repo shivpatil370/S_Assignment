@@ -1,0 +1,121 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+          <form id="expense-form" class="bg-light p-3 rounded">
+            <div class="mb-3">
+              <label for="number">Choose Expenseamount</label>
+              <input type="number" id="number" class="form-control-sm" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="text">Choose description</label>
+              <input type="text" id="text" class="form-control-sm" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="Category" class="form-label">Choose a Category</label>
+              <select name="" id="Category">
+                <option value="fuel">fuel</option>
+                <option value="food">food</option>
+                <option value="electricity">electricity</option>
+                <option value="movie" class="">Movie</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn text-bg-success">add Expense</button>
+          </form>
+          <ul id="expense-list" class="border gap-1"></ul>
+    </div>
+    <script>
+          const form = document.querySelector('#expense-form');
+        const expenseList = document.querySelector('#expense-list');
+        let jsondatas=JSON.parse(localStorage.getItem(`keys`))||[];
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Get form values
+            const expenseAmount = document.querySelector('#number').value;
+            const description = document.querySelector('#text').value;
+            const category = document.querySelector('#Category').value;
+            
+            let obj={
+                id: new Date().getTime().toString(),
+              expenseAmount:expenseAmount,
+              description:description,
+              category:category
+            }
+
+            jsondatas.push(obj);
+            
+            localStorage.setItem(`keys`,JSON.stringify(jsondatas));
+            MyFun(jsondatas);
+
+        // Clear the form
+        form.reset();
+
+        });
+
+
+        function MyFun(data){
+            expenseList.innerHTML="";
+
+            data.map((ele)=>{
+            const li = document.createElement('li');
+            li.style.margin="5px";
+            li.style.fontWeight="bold";
+
+            li.innerHTML = `${ele.expenseAmount} - ${ele.description} - ${ele.category} 
+                            <button class="btn btn-primary edit">Edit</button>
+                            <button class="btn btn-danger delete">Delete</button>`;
+            
+            // Add event listeners to the buttons
+            li.querySelector('.delete').addEventListener('click', function() {
+                jsondatas=jsondatas.filter(el=> el.id!==ele.id);
+                // console.log(jsondatas);
+
+                localStorage.setItem(`keys`,JSON.stringify(jsondatas));
+
+                expenseList.removeChild(li);
+                MyFun(jsondatas)
+            });
+            li.querySelector('.edit').addEventListener('click', function() {
+                // Edit functionality here
+                document.querySelector('#number').value = ele.expenseAmount;
+                document.querySelector('#text').value = ele.description;
+                document.querySelector('#Category').value = ele.category;
+
+                jsondatas=jsondatas.filter((el)=>{
+                    return el.id!==ele.id;
+                });
+                localStorage.setItem(`keys`,JSON.stringify(jsondatas));
+
+                expenseList.removeChild(li);
+                MyFun(jsondatas)
+            });
+
+            // Add the list item to the list
+            expenseList.appendChild(li);
+
+
+        })
+        
+       
+
+        }
+
+        MyFun(jsondatas)
+      
+    </script>
+</body>
+</html>
