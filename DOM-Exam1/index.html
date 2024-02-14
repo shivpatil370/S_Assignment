@@ -1,0 +1,55 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            width: 70%;
+        }
+         #tr1>th{
+            border: 1px solid black;
+        }
+
+        
+    </style>
+</head>
+<body>
+
+    <form>
+        <label for="candyname">Candy Name:</label>
+        <input id="candyname" type="text">
+
+        <label for="description">Description:</label>
+        <input id="description" type="text">
+
+        <label for="price">Price:</label>
+        <input id="price" type="text">
+
+        <label for="quantity">Quantity:</label>
+        <input id="quantity" type="text">
+
+        <button type="submit">Add Item</button>
+    </form>
+    
+     <br>
+     <hr>
+
+    <table>
+        <tr id="tr1">
+            <th>CandyName</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Quantity</th>
+        </tr>
+        <tr id="tr2">
+            <!--td  -->
+        </tr>
+    </table>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="index.js"></script>
+</html>
