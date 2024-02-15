@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 style="text-align: center;">Feedback System</h1>
+    <hr>
+    <br>
+    <h3>Overall Ratings</h3>
+    <p>* <span id="star1"><b>0</b></span></p>
+    <p>** <span id="star2"><b>0</b></span></p>
+    <p>*** <span id="star3"><b>0</b></span></p>
+    <p>**** <span id="star4"><b>0</b></span></p>
+    <p>***** <span id="star5"><b>0</b></span></p>
+    <hr>
+    <br>
+    <h3>Feedback Form</h3>
+    <form>
+        <label for="name">Enter Your Name:</label>
+        <input type="text" id="name">
+
+        <label for="rating">Choose Rating:</label>
+        <select id="rating">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <br>
+    <hr>
+
+    <h3>ALL FEEDBACKS</h3>
+    
+    <ul>
+
+    </ul>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="index.js"></script>
+</html>
