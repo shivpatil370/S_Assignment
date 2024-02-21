@@ -82,7 +82,8 @@ else{
             rating:rating1
         })
         .then((res)=>{
-            // console.log(res)
+            // console.log(res);
+            check=[];
 
             axios.get("https://crudcrud.com/api/cae3a942dd244531b05857e2b3cce1e2/todos")
             .then((res)=>{
